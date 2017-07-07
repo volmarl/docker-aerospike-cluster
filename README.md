@@ -1,8 +1,14 @@
 # Usage
 
-```bash
-docker stack deploy -c aerospike.yml aerospike  
-```
+Pre-requisite:
+
+Have a docker swarm mode configured:
+
+https://docs.docker.com/engine/swarm/swarm-tutorial/
+
+
+
+
 
 1. Verify your deployment:
     `docker stack ls`
@@ -12,5 +18,10 @@ docker stack deploy -c aerospike.yml aerospike
     `docker ps`
 1. To remove the docker swarm stack:
 `docker stack rm aerospike`
+1. Deploy your aerospike stack
+
+```bash
+docker stack deploy -c aerospike.yml aerospike  
+```
 
 
