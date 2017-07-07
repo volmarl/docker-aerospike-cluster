@@ -19,7 +19,6 @@ https://docs.docker.com/engine/swarm/swarm-tutorial/
 1. To remove the docker swarm stack:
 `docker stack rm aerospike`
 1. Deploy your aerospike stack
-
 ```bash
 docker stack deploy -c aerospike.yml aerospike  
 ```
