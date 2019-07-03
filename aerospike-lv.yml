@@ -1,15 +1,20 @@
-version: '3.3'
+version: '3.7'
 
 services:
     aerospike:
-        image: aerospike/aerospike-server
+        image: aerospike/aerospike-server:latest 
         environment:
             AEROSPIKE_ENV: aerospike 
         networks:
         - aerospikenet
         deploy:
-            mode: global
+            mode: replicated
+            replicas: 2
             endpoint_mode: dnsrr
+        ulimits:
+          nofile:
+             soft: 100000
+             hard: 400000
         command: [ "/run/secrets/addtools.sh"]
         secrets:
         - source: conffile
@@ -19,6 +24,21 @@ services:
           target:  addtools.sh 
           mode: 0750 
     
+    amc:
+
+        image: aerospike/amc:4.0.25
+        networks:
+        - aerospikenet
+        deploy:
+            mode: global
+            endpoint_mode: dnsrr
+        ports:
+
+        - "8081:8081"
+        deploy:
+           placement:
+             constraints: [node.role == manager]
+
 networks:
     aerospikenet:
         driver: overlay
