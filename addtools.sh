@@ -1,6 +1,6 @@
 apt-get update -y
 apt-get install vim -y
-apt-get install dnsutils -y
+apt-get install dnsutils net-tools -y
 
 {
 echo "start background discovery in 10 secs"
