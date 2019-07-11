@@ -3,6 +3,9 @@
 Pre-requisite:
 
 Have a docker swarm mode configured:
+```
+docker swarm init
+```
 
 https://docs.docker.com/engine/swarm/swarm-tutorial/
 
